@@ -26,9 +26,11 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
 RUN pip3 install --upgrade pip && \ 
         pip3 install uwsgi && \
+        pip3 install virtualenv && \
         mkdir /opt/django_app && \
         mkdir -p /etc/uwsgi/sites && \
-        chmod 755 /usr/local/bin/entrypoint.sh
+        chmod 755 /usr/local/bin/entrypoint.sh && \
+        virtualenv /opt/django-venv
 
 COPY uwsgi_example.ini /etc/uwsgi/sites/example.ini
 
